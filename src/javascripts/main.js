@@ -1,10 +1,9 @@
 import '../styles/main.scss';
 import '@fortawesome/fontawesome-free/js/all';
+import eat from './eat';
 
 const init = () => {
-  document.getElementById('pet').innerHTML = '<i class="fas fa-heart"></i>';
-
-  console.log('hi');
+  eat.eatOptions();
 };
 
 init();
