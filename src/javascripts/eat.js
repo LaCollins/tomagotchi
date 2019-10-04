@@ -1,46 +1,67 @@
 import utilities from './helpers/utilities';
 
+let myProgress = 100;
+
+const progressBar = (progress) => {
+  const progressString = `
+      <div class="meter">
+      <span style="width: ${progress}%"></span>
+      <div class="progressPercentage">${progress}%</div>
+      </div>
+      </div>
+      `;
+  utilities.printToDom('full', progressString);
+};
+
+const progressInt = () => {
+  progressBar(myProgress);
+  setInterval(() => {
+    progressBar(myProgress);
+    myProgress -= 1;
+  }, 15000);
+};
+
 const food = [
-  { type: 'ice cream', score: -3, img: '<i class="fas fa-ice-cream icon"></i>' },
+  { type: 'icecream', score: -3, img: '<i class="fas fa-ice-cream icon"></i>' },
   { type: 'carrot', score: 10, img: '<i class="fas fa-carrot icon"></i>' },
   { type: 'chicken', score: 5, img: '<i class="fas fa-drumstick-bite icon"></i>' },
 ];
 
-const changeScore = (e) => {
-  const type = e.target.id;
-  console.log(type);
-};
-
-
-const eventListener = () => {
-  const icons = document.getElementsByClassName('icon');
-  for (let i = 0; i < icons.length; i += 1) {
-    icons[i].addEventListener('click', changeScore);
+const getFood = (e) => {
+  const type = e.target.parentNode.id;
+  const typeParent = e.target.parentNode.parentNode.id;
+  for (let j = 0; j < food.length; j += 1) {
+    if (type.includes(food[j].type) || typeParent.includes(food[j].type)) {
+      myProgress += food[j].score;
+    }
+    if (myProgress > 100) {
+      myProgress = 100;
+    } else if (myProgress < 0) {
+      myProgress = 0;
+    }
   }
+  progressBar(myProgress);
 };
 
-const stringBuild = (progress) => {
+const iconStringBuild = () => {
   let stringToPrint = '<div id="foodIcons">';
   for (let i = 0; i < food.length; i += 1) {
-    stringToPrint += `<div id="${food.type}">${food[i].img}</div>`;
+    stringToPrint += `<button type="button" id="${food[i].type}" class="button">${food[i].img}</button>`;
   }
-  stringToPrint += '</div>';
   stringToPrint += `
-    <div class="meter">
-        <span style="width: ${progress}%"></span>
-        <div class="progressPercentage">${progress}%</div>
-        </div>`;
+    </div>
+    <div id="full">
+    `;
   utilities.printToDom('eat', stringToPrint);
-  eventListener();
+
+  for (let i = 0; i < food.length; i += 1) {
+    document.getElementById(food[i].type).addEventListener('click', getFood);
+  }
 };
 
 const eatOptions = () => {
-  let myProgress = 100;
-  stringBuild(myProgress);
-  setInterval(() => {
-    stringBuild(myProgress);
-    myProgress -= 1;
-  }, 10000);
+  iconStringBuild();
+  progressInt();
 };
 
 export default { eatOptions };

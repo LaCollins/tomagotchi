@@ -9,12 +9,19 @@ $primary-color: #b7fab7;
     #foodIcons {
         display: flex;
         flex-direction: row;
-        font-size: 2.5em;
         margin: .5em;
     }
 }
 
-.icon {
+button {
+    height: 2em;
+    width: 2em;
+    border-radius: 4em;
+    background-color: white;
+    border: 2px solid green;
+    color: green;
+    text-align: center;
+    font-size: 2.5em;
     margin-right: 2em;
 }
 
