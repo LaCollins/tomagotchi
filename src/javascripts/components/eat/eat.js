@@ -1,11 +1,12 @@
-import utilities from './helpers/utilities';
+import utilities from '../../helpers/utilities';
+import './eat.scss';
 
 let myProgress = 100;
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="meter">
-      <span style="width: ${progress}%"></span>
+      <div class="fullMeter">
+      <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}%</div>
       </div>
       </div>
@@ -46,7 +47,7 @@ const getFood = (e) => {
 const iconStringBuild = () => {
   let stringToPrint = '<div id="foodIcons">';
   for (let i = 0; i < food.length; i += 1) {
-    stringToPrint += `<button type="button" id="${food[i].type}" class="button">${food[i].img}</button>`;
+    stringToPrint += `<button type="button" id="${food[i].type}" class="foodButton">${food[i].img}</button>`;
   }
   stringToPrint += `
     </div>
@@ -59,9 +60,11 @@ const iconStringBuild = () => {
   }
 };
 
+const getFullProgress = () => myProgress;
+
 const eatOptions = () => {
   iconStringBuild();
   progressInt();
 };
 
-export default { eatOptions };
+export default { eatOptions, getFullProgress };
