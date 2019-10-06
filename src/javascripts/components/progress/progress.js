@@ -5,14 +5,39 @@ import sleep from '../sleep/sleep';
 import utilities from '../../helpers/utilities';
 import './progress.scss';
 
+const printHearts = (happiness) => {
+  const fullHeart = '<i class="fas fa-heart" id="fullHeart"></i>';
+  const emptyHeart = '<i class="far fa-heart" id="emptyHeart></i>';
+
+  const fullHappiness = fullHeart + fullHeart + fullHeart + fullHeart;
+  const threeHearts = fullHeart + fullHeart + fullHeart + emptyHeart;
+  const halfHeart = fullHeart + fullHeart + emptyHeart + emptyHeart;
+  const oneHeart = fullHeart + emptyHeart + emptyHeart + emptyHeart;
+  const dead = emptyHeart + emptyHeart + emptyHeart + emptyHeart;
+
+  if (happiness > 75) {
+    utilities.printToDom('hearts', fullHappiness);
+  } else if (happiness <= 75 && happiness > 50) {
+    utilities.printToDom('hearts', threeHearts);
+  } else if (happiness <= 50 && happiness > 25) {
+    utilities.printToDom('hearts', halfHeart);
+  } else if (happiness <= 25 && happiness > 0) {
+    utilities.printToDom('hearts', oneHeart);
+  } else if (happiness === 0) {
+    utilities.printToDom('hearts', dead);
+  }
+};
+
 const happinessBar = (progress) => {
   const progressString = `
-        <div class="happinessMeter">
-        <span style="width: ${progress}%" id="bar"></span>
-        <div class="progressPercentage">Happiness ${progress}%</div>
-        </div>
-        `;
+          <div id="hearts"></div>
+          <div class="happinessMeter">
+          <span style="width: ${progress}%" id="bar"></span>
+          <div class="progressPercentage">Happiness ${progress}%</div>
+          </div>
+          `;
   utilities.printToDom('progress', progressString);
+  printHearts(progress);
 };
 
 

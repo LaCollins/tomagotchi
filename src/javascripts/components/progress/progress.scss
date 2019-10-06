@@ -8,7 +8,12 @@
     width: 100%;
     left: 50%;
     margin-left: -270px;
-    bottom: -600px;
+    bottom: -650px;
+
+    #hearts {
+        font-size: 18px;
+        color: $red;  
+    }
 }
 .happinessMeter {
     height: 20px;
@@ -46,4 +51,16 @@
       font-size: 1.5em;
   }
 
-  
+  @media only screen and (min-width: 600px) {
+    
+    #hearts {
+      margin-right: 40vw; 
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+
+    #hearts {
+        margin-right: 73vw;
+    }
+  }
