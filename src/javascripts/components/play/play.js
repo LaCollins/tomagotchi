@@ -2,7 +2,7 @@ import utilities from '../../helpers/utilities';
 import playData from '../../helpers/data/playData';
 import './play.scss';
 
-let myProgress = 100;
+let myProgress = 50;
 
 const play = playData.getPlayData();
 
@@ -10,7 +10,7 @@ const progressBar = (progress) => {
   const progressString = `
       <div class="funMeter">
       <span style="width: ${progress}%" id="bar"></span>
-      <div class="progressPercentage">${progress}%</div>
+      <div class="progressPercentage">${progress}% Fun</div>
       </div>
       </div>
       `;
@@ -36,6 +36,7 @@ const getPlay = (e) => {
       myProgress = 100;
     } else if (myProgress < 0) {
       myProgress = 0;
+      clearInterval(progressInt);
     }
   }
   progressBar(myProgress);

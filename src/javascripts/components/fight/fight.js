@@ -10,7 +10,7 @@ const progressBar = (progress) => {
   const progressString = `
       <div class="fightMeter">
       <span style="width: ${progress}%" id="bar"></span>
-      <div class="progressPercentage">${progress}%</div>
+      <div class="progressPercentage">${progress}% Strength</div>
       </div>
       </div>
       `;
@@ -36,6 +36,7 @@ const getFight = (e) => {
       myProgress = 100;
     } else if (myProgress < 0) {
       myProgress = 0;
+      clearInterval(progressInt);
     }
   }
   progressBar(myProgress);

@@ -2,7 +2,7 @@ import utilities from '../../helpers/utilities';
 import sleepData from '../../helpers/data/sleepData';
 import './sleep.scss';
 
-let myProgress = 100;
+let myProgress = 50;
 
 const sleep = sleepData.getSleepData();
 
@@ -10,7 +10,7 @@ const progressBar = (progress) => {
   const progressString = `
       <div class="sleepMeter">
       <span style="width: ${progress}%" id="bar"></span>
-      <div class="progressPercentage">${progress}%</div>
+      <div class="progressPercentage">${progress}% Energy</div>
       </div>
       </div>
       `;
@@ -36,6 +36,7 @@ const getSleep = (e) => {
       myProgress = 100;
     } else if (myProgress < 0) {
       myProgress = 0;
+      clearInterval(progressInt);
     }
   }
   progressBar(myProgress);

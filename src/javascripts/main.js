@@ -5,6 +5,7 @@ import play from './components/play/play';
 import fight from './components/fight/fight';
 import sleep from './components/sleep/sleep';
 import pet from './components/pet/pet';
+import progress from './components/progress/progress';
 
 const init = () => {
   eat.eatOptions();
@@ -12,6 +13,7 @@ const init = () => {
   fight.fightOptions();
   sleep.sleepOptions();
   pet.printPet();
+  progress.findHappiness();
 };
 
 init();
