@@ -1,13 +1,18 @@
 @import '../../../styles/colors';
 
 #progress {
+    
     position: relative;
     text-align: center;
-    z-index: 3;
+    z-index: 99;
+    width: 100%;
+    left: 50%;
+    margin-left: -270px;
+    bottom: -600px;
 }
 .happinessMeter {
     height: 20px;
-    width: 80%;
+    width: 500px;
     position: relative;
     background: black;
     border-radius: 25px;
@@ -40,3 +45,5 @@
       margin: 1em;
       font-size: 1.5em;
   }
+
+  
