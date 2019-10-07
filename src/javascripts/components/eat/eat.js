@@ -9,6 +9,7 @@ const progressBar = (progress) => {
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Full</div>
       </div>
+      <div id="eatTitle">EAT</div>
       </div>
       `;
   utilities.printToDom('full', progressString);
@@ -37,7 +38,7 @@ const getFood = (e) => {
     }
     if (myProgress > 100) {
       myProgress = 100;
-    } else if (myProgress < 0) {
+    } else if (myProgress < 1) {
       myProgress = 0;
       clearInterval(progressInt);
     }

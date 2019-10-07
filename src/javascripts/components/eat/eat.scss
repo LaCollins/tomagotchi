@@ -14,6 +14,15 @@
         flex-direction: row;
         margin: .5em;
     }
+
+    #eatTitle {
+        position: relative;
+        font-size: 2.5em;
+        top: 150px;
+        margin-left: 4em;
+        color: $green;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }
 
 .foodButton {
