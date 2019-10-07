@@ -12,6 +12,7 @@ const progressBar = (progress) => {
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Strength</div>
       </div>
+      <div id="fightTitle">FIGHT</div>
       </div>
       `;
   utilities.printToDom('strength', progressString);
@@ -20,7 +21,6 @@ const progressBar = (progress) => {
 const progressInt = () => {
   progressBar(myProgress);
   setInterval(() => {
-    progressBar(myProgress);
     myProgress -= 1;
   }, 15000);
 };
@@ -34,7 +34,7 @@ const getFight = (e) => {
     }
     if (myProgress > 100) {
       myProgress = 100;
-    } else if (myProgress < 0) {
+    } else if (myProgress < 1) {
       myProgress = 0;
       clearInterval(progressInt);
     }
