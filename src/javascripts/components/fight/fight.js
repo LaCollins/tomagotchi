@@ -3,6 +3,7 @@ import fightData from '../../helpers/data/fightData';
 import './fight.scss';
 
 let myProgress = 100;
+let int = null;
 
 const fight = fightData.getFightData();
 
@@ -20,9 +21,13 @@ const progressBar = (progress) => {
 
 const progressInt = () => {
   progressBar(myProgress);
-  setInterval(() => {
+  int = setInterval(() => {
+    progressBar(myProgress);
     myProgress -= 1;
-  }, 15000);
+    if (myProgress === -1) {
+      clearInterval(int);
+    }
+  }, 1000);
 };
 
 const getFight = (e) => {
@@ -36,7 +41,7 @@ const getFight = (e) => {
       myProgress = 100;
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(progressInt);
+      clearInterval(int);
     }
   }
   progressBar(myProgress);

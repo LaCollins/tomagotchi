@@ -3,6 +3,7 @@ import playData from '../../helpers/data/playData';
 import './play.scss';
 
 let myProgress = 50;
+let int = null;
 
 const play = playData.getPlayData();
 
@@ -20,10 +21,13 @@ const progressBar = (progress) => {
 
 const progressInt = () => {
   progressBar(myProgress);
-  setInterval(() => {
+  int = setInterval(() => {
     progressBar(myProgress);
     myProgress -= 1;
-  }, 15000);
+    if (myProgress === -1) {
+      clearInterval(int);
+    }
+  }, 1000);
 };
 
 const getPlay = (e) => {
@@ -35,9 +39,10 @@ const getPlay = (e) => {
     }
     if (myProgress > 100) {
       myProgress = 100;
+      progressInt();
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(progressInt);
+      clearInterval(int);
     }
   }
   progressBar(myProgress);

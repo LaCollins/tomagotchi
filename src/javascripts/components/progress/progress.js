@@ -4,6 +4,7 @@ import play from '../play/play';
 import sleep from '../sleep/sleep';
 import utilities from '../../helpers/utilities';
 import './progress.scss';
+import deadBunny from '../pet/assets/images/bunnyDeath.gif';
 
 const printHearts = (happiness) => {
   const fullHeart = '<i class="fas fa-heart" id="fullHeart"></i>';
@@ -14,6 +15,7 @@ const printHearts = (happiness) => {
   const halfHeart = fullHeart + fullHeart + emptyHeart + emptyHeart;
   const oneHeart = fullHeart + emptyHeart + emptyHeart + emptyHeart;
   const dead = emptyHeart + emptyHeart + emptyHeart + emptyHeart;
+  const imageToChange = document.getElementById('petImage');
 
   if (happiness > 75) {
     utilities.printToDom('hearts', fullHappiness);
@@ -25,6 +27,7 @@ const printHearts = (happiness) => {
     utilities.printToDom('hearts', oneHeart);
   } else if (happiness === 0) {
     utilities.printToDom('hearts', dead);
+    imageToChange.innerHTML = `<img src="${deadBunny}" alt="Fluffy is Dead! You killed him!">`;
   }
 };
 

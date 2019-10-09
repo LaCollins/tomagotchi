@@ -22,8 +22,12 @@ const progressInt = () => {
   progressBar(myProgress);
   setInterval(() => {
     progressBar(myProgress);
-    myProgress -= 1;
-  }, 15000);
+    if (myProgress < 1) {
+      myProgress = 0;
+    } else {
+      myProgress -= 1;
+    }
+  }, 1000);
 };
 
 const getSleep = (e) => {
@@ -37,7 +41,6 @@ const getSleep = (e) => {
       myProgress = 100;
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(progressInt);
     }
   }
   progressBar(myProgress);
