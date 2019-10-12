@@ -8,7 +8,7 @@ const fight = fightData.getFightData();
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="fightMeter">
+      <div class="fightMeter" id="strengthMeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Strength</div>
       </div>
@@ -21,7 +21,14 @@ const progressBar = (progress) => {
 const progressInt = () => {
   progressBar(myProgress);
   setInterval(() => {
-    myProgress -= 1;
+    progressBar(myProgress);
+    if (myProgress < 1) {
+      myProgress = 0;
+      utilities.changeColor(myProgress, 'strengthMeter');
+    } else {
+      myProgress -= 1;
+      utilities.changeColor(myProgress, 'strengthMeter');
+    }
   }, 15000);
 };
 
@@ -36,10 +43,10 @@ const getFight = (e) => {
       myProgress = 100;
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(progressInt);
     }
   }
   progressBar(myProgress);
+  utilities.changeColor(myProgress, 'strengthMeter');
 };
 
 const iconStringBuild = () => {

@@ -8,7 +8,7 @@ const play = playData.getPlayData();
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="funMeter">
+      <div class="funMeter" id="playmeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Fun</div>
       </div>
@@ -22,7 +22,13 @@ const progressInt = () => {
   progressBar(myProgress);
   setInterval(() => {
     progressBar(myProgress);
-    myProgress -= 1;
+    if (myProgress < 1) {
+      myProgress = 0;
+      utilities.changeColor(myProgress, 'playMeter');
+    } else {
+      myProgress -= 1;
+      utilities.changeColor(myProgress, 'playMeter');
+    }
   }, 15000);
 };
 
@@ -35,12 +41,13 @@ const getPlay = (e) => {
     }
     if (myProgress > 100) {
       myProgress = 100;
+      progressInt();
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(progressInt);
     }
   }
   progressBar(myProgress);
+  utilities.changeColor(myProgress, 'playMeter');
 };
 
 const iconStringBuild = () => {

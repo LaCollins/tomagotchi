@@ -15,6 +15,7 @@
         color: $red;  
     }
 }
+
 .happinessMeter {
     height: 20px;
     width: 500px;
@@ -45,20 +46,32 @@
         }
     }
 
+    .dangerMeter {
+
+      > span {
+          background-color: $danger;
+          background-image: linear-gradient(
+          center bottom,
+          $danger 37%,
+          $danger2 69%
+          );
+          }
+      }
+
   .progressPercentage {
       font-family: Arial, Helvetica, sans-serif;
       margin: 1em;
       font-size: 1.5em;
   }
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 800px) {
     
     #hearts {
-      margin-right: 40vw; 
+      margin-right: 45vw; 
     }
   }
 
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: 1000px) {
 
     #hearts {
         margin-right: 73vw;

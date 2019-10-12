@@ -4,6 +4,7 @@ import play from '../play/play';
 import sleep from '../sleep/sleep';
 import utilities from '../../helpers/utilities';
 import './progress.scss';
+import deadBunny from '../pet/assets/images/bunnyDeath.gif';
 
 const printHearts = (happiness) => {
   const fullHeart = '<i class="fas fa-heart" id="fullHeart"></i>';
@@ -14,6 +15,7 @@ const printHearts = (happiness) => {
   const halfHeart = fullHeart + fullHeart + emptyHeart + emptyHeart;
   const oneHeart = fullHeart + emptyHeart + emptyHeart + emptyHeart;
   const dead = emptyHeart + emptyHeart + emptyHeart + emptyHeart;
+  const imageToChange = document.getElementById('petImage');
 
   if (happiness > 75) {
     utilities.printToDom('hearts', fullHappiness);
@@ -25,13 +27,14 @@ const printHearts = (happiness) => {
     utilities.printToDom('hearts', oneHeart);
   } else if (happiness === 0) {
     utilities.printToDom('hearts', dead);
+    imageToChange.innerHTML = `<img src="${deadBunny}" alt="Fluffy is Dead! You killed him!">`;
   }
 };
 
 const happinessBar = (progress) => {
   const progressString = `
           <div id="hearts"></div>
-          <div class="happinessMeter">
+          <div class="happinessMeter" id="healthMeter">
           <span style="width: ${progress}%" id="bar"></span>
           <div class="progressPercentage">Happiness ${progress}%</div>
           </div>
@@ -51,6 +54,7 @@ const findHappiness = () => {
     const fun = play.getPlayProgress();
     totalHappiness = Math.round((fun + full + strength + energy) / 4);
     happinessBar(totalHappiness);
+    utilities.changeColor(totalHappiness, 'healthMeter');
   }, 5000);
 };
 
