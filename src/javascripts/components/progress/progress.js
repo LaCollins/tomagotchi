@@ -34,7 +34,7 @@ const printHearts = (happiness) => {
 const happinessBar = (progress) => {
   const progressString = `
           <div id="hearts"></div>
-          <div class="happinessMeter">
+          <div class="happinessMeter" id="healthMeter">
           <span style="width: ${progress}%" id="bar"></span>
           <div class="progressPercentage">Happiness ${progress}%</div>
           </div>
@@ -54,6 +54,7 @@ const findHappiness = () => {
     const fun = play.getPlayProgress();
     totalHappiness = Math.round((fun + full + strength + energy) / 4);
     happinessBar(totalHappiness);
+    utilities.changeColor(totalHappiness, 'healthMeter');
   }, 5000);
 };
 

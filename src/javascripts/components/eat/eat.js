@@ -5,7 +5,7 @@ let myProgress = 100;
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="fullMeter">
+      <div class="fullMeter" id="eatMeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Full</div>
       </div>
@@ -21,10 +21,12 @@ const progressInt = () => {
     progressBar(myProgress);
     if (myProgress < 1) {
       myProgress = 0;
+      utilities.changeColor(myProgress, 'eatMeter');
     } else {
       myProgress -= 1;
+      utilities.changeColor(myProgress, 'eatMeter');
     }
-  }, 1000);
+  }, 15000);
 };
 
 const food = [
@@ -47,6 +49,7 @@ const getFood = (e) => {
     }
   }
   progressBar(myProgress);
+  utilities.changeColor(myProgress, 'eatMeter');
 };
 
 const iconStringBuild = () => {

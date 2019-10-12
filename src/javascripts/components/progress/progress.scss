@@ -15,6 +15,7 @@
         color: $red;  
     }
 }
+
 .happinessMeter {
     height: 20px;
     width: 500px;
@@ -44,6 +45,18 @@
         overflow: hidden;
         }
     }
+
+    .dangerMeter {
+
+      > span {
+          background-color: $danger;
+          background-image: linear-gradient(
+          center bottom,
+          $danger 37%,
+          $danger2 69%
+          );
+          }
+      }
 
   .progressPercentage {
       font-family: Arial, Helvetica, sans-serif;

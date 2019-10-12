@@ -76,3 +76,15 @@
       margin: 1em;
       font-size: 1.5em;
   }
+
+  .dangerMeter {
+
+    > span {
+        background-color: $danger;
+        background-image: linear-gradient(
+        center bottom,
+        $danger 37%,
+        $danger2 69%
+        );
+        }
+    }

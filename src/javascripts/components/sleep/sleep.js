@@ -8,7 +8,7 @@ const sleep = sleepData.getSleepData();
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="sleepMeter">
+      <div class="sleepMeter" id="energyMeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Energy</div>
       </div>
@@ -24,10 +24,12 @@ const progressInt = () => {
     progressBar(myProgress);
     if (myProgress < 1) {
       myProgress = 0;
+      utilities.changeColor(myProgress, 'energyMeter');
     } else {
       myProgress -= 1;
+      utilities.changeColor(myProgress, 'energyMeter');
     }
-  }, 1000);
+  }, 15000);
 };
 
 const getSleep = (e) => {
@@ -44,6 +46,7 @@ const getSleep = (e) => {
     }
   }
   progressBar(myProgress);
+  utilities.changeColor(myProgress, 'energyMeter');
 };
 
 const iconStringBuild = () => {

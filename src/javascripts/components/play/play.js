@@ -3,13 +3,12 @@ import playData from '../../helpers/data/playData';
 import './play.scss';
 
 let myProgress = 50;
-let int = null;
 
 const play = playData.getPlayData();
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="funMeter">
+      <div class="funMeter" id="playmeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Fun</div>
       </div>
@@ -21,13 +20,16 @@ const progressBar = (progress) => {
 
 const progressInt = () => {
   progressBar(myProgress);
-  int = setInterval(() => {
+  setInterval(() => {
     progressBar(myProgress);
-    myProgress -= 1;
-    if (myProgress === -1) {
-      clearInterval(int);
+    if (myProgress < 1) {
+      myProgress = 0;
+      utilities.changeColor(myProgress, 'playMeter');
+    } else {
+      myProgress -= 1;
+      utilities.changeColor(myProgress, 'playMeter');
     }
-  }, 1000);
+  }, 15000);
 };
 
 const getPlay = (e) => {
@@ -42,10 +44,10 @@ const getPlay = (e) => {
       progressInt();
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(int);
     }
   }
   progressBar(myProgress);
+  utilities.changeColor(myProgress, 'playMeter');
 };
 
 const iconStringBuild = () => {

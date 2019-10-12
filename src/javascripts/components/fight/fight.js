@@ -3,13 +3,12 @@ import fightData from '../../helpers/data/fightData';
 import './fight.scss';
 
 let myProgress = 100;
-let int = null;
 
 const fight = fightData.getFightData();
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="fightMeter">
+      <div class="fightMeter" id="strengthMeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Strength</div>
       </div>
@@ -21,13 +20,16 @@ const progressBar = (progress) => {
 
 const progressInt = () => {
   progressBar(myProgress);
-  int = setInterval(() => {
+  setInterval(() => {
     progressBar(myProgress);
-    myProgress -= 1;
-    if (myProgress === -1) {
-      clearInterval(int);
+    if (myProgress < 1) {
+      myProgress = 0;
+      utilities.changeColor(myProgress, 'strengthMeter');
+    } else {
+      myProgress -= 1;
+      utilities.changeColor(myProgress, 'strengthMeter');
     }
-  }, 1000);
+  }, 15000);
 };
 
 const getFight = (e) => {
@@ -41,10 +43,10 @@ const getFight = (e) => {
       myProgress = 100;
     } else if (myProgress < 1) {
       myProgress = 0;
-      clearInterval(int);
     }
   }
   progressBar(myProgress);
+  utilities.changeColor(myProgress, 'strengthMeter');
 };
 
 const iconStringBuild = () => {
