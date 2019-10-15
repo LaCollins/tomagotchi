@@ -65,13 +65,27 @@
   }
 
   @media only screen and (min-width: 800px) {
+
+    .happinessMeter {
+      width: 200px;
+      left: 18%;
+      bottom: 10px;
+    }
     
     #hearts {
       margin-right: 45vw; 
     }
+    
+
   }
 
   @media only screen and (min-width: 1000px) {
+
+    .happinessMeter {
+      width: 500px;
+      left: 0;
+      bottom: 0;
+    }
 
     #hearts {
         margin-right: 73vw;
