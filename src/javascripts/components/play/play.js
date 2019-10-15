@@ -8,7 +8,7 @@ const play = playData.getPlayData();
 
 const progressBar = (progress) => {
   const progressString = `
-      <div class="funMeter" id="playmeter">
+      <div class="funMeter" id="playMeter">
       <span style="width: ${progress}%" id="bar"></span>
       <div class="progressPercentage">${progress}% Fun</div>
       </div>
