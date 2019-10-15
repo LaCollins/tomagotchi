@@ -1,7 +1,10 @@
 import utilities from '../../helpers/utilities';
+import eatData from '../../helpers/data/eatData';
 import './eat.scss';
 
 let myProgress = 100;
+
+const food = eatData.getEatData();
 
 const progressBar = (progress) => {
   const progressString = `
@@ -28,12 +31,6 @@ const progressInt = () => {
     }
   }, 15000);
 };
-
-const food = [
-  { type: 'icecream', score: -3, img: '<i class="fas fa-ice-cream icon"></i>' },
-  { type: 'carrot', score: 10, img: '<i class="fas fa-carrot icon"></i>' },
-  { type: 'chicken', score: 5, img: '<i class="fas fa-drumstick-bite icon"></i>' },
-];
 
 const getFood = (e) => {
   const type = e.target.parentNode.id;
