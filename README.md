@@ -1,10 +1,10 @@
-# tomagotchi
+# tamagotchi
 
 ## Description
-This is a Tomagotchi pet. You can use the buttons to feed, play with, fight, or let your pet sleep. BEWARE! If Fluffy's happiness hits 0 he dies!
+This is a Tamagotchi pet. You can use the buttons to feed, play with, fight, or let your pet sleep. BEWARE! If Fluffy's happiness hits 0 he dies!
 
 ## Screenshots
-![Mainview of Tomagotchi](https://raw.githubusercontent.com/LaCollins/tomagotchi/master/screenshots/mainview.PNG)
+![Mainview of Tamagotchi](https://raw.githubusercontent.com/LaCollins/tomagotchi/master/screenshots/mainview.PNG)
 ![Tomagotchi is losing health](https://raw.githubusercontent.com/LaCollins/tomagotchi/master/screenshots/secondview.PNG)
 ![Dead Pet](https://raw.githubusercontent.com/LaCollins/tomagotchi/master/screenshots/thirdview.PNG)
 
